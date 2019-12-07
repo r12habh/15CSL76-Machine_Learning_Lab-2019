@@ -1,20 +1,17 @@
 import csv
-with open('CSVFile.csv', 'r') as f:
-  reader = csv.reader(f)
-  # header = next(reader)
-  your_list = list(reader)
+your_list = list(csv.reader(open('P1_data.csv','r')))
 
-h =[['0', '0', '0', '0', '0', '0']]
+h =['0', '0', '0', '0', '0', '0']
 for i in your_list:
   print(i)
   if i[-1]=='Yes':
     j=0
     for x in i:
-      if x!='Yes' and x!=h[0][j]:
-          if h[0][j]=='0':
-            h[0][j]=x
-          elif h[0][j]!='0':
-            h[0][j]='?'
+      if x!='Yes' and x!=[j]:
+          if h[j]=='0':
+            h[j]=x
+          elif h[j]!='0':
+            h[j]='?'
 
       j+=1
 print('\nThe maximally specific hypothesis for a given training example is: ')
@@ -28,6 +25,6 @@ Output:
 ['Sunny', 'Warm', 'High', 'Strong', 'Cool', 'Change', 'Yes']
 
 The maximally specific hypothesis for a given training example is: 
-[['Sunny', 'Warm', '?', 'Strong', '?', '?']]
+['Sunny', 'Warm', '?', 'Strong', '?', '?']
 
 '''
